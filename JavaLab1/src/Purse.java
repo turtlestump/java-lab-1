@@ -13,7 +13,16 @@ public class Purse {
     // Accessors / Mutators
     double getValue() {
 
-        return 0.0;
+        double total = 0.0;
+
+        // Iterate through cash to get the value of each denomination.
+        for (Map.Entry<Denomination, Integer> entry : cash.entrySet()) {
+
+            total += entry.getValue() * entry.getKey().amt();
+
+        }
+
+        return total;
 
     }
 
@@ -41,10 +50,10 @@ public class Purse {
         // Iterate through cash to print the quantity of each denomination.
         for (Map.Entry<Denomination, Integer> entry : cash.entrySet()) {
 
-            contents = contents + entry.getValue() + " " + entry.getKey() + "s\n";
+            contents = contents + entry.getValue() + " " + entry.getKey().name() + "\n";
 
         }
-        
+
         return contents;
 
     }
